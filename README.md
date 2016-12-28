@@ -3,7 +3,7 @@
 
 #### Python脚本替换Android资源(包名,图片,文件内容)
 
-* 详见： [Python4Android](./app/src/main/java/com/jinqiang/py4android/Python4Android.md)
+* 详见： [Python4Android.md](./app/src/main/java/com/jinqiang/py4android/Python4Android.md)
 
 ---
 
@@ -29,3 +29,10 @@
 mWeb.loadUrl("file:///android_asset/web_page/page.html");
 ```
 
+* 详见: [WebWelcomeActivity](./app/src/main/java/com/jinqiang/welcomebanner/WebWelcomeActivity.java)
+
+---
+
+#### Android MVP 实践
+
+* 详见 [Android MVP.md](./app/src/main/java/com/jinqiang/MVPtest/MVP.md)
