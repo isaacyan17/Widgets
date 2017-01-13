@@ -32,4 +32,9 @@ dependencies {
     //ConverterFactory的String依赖包
     compile 'com.jakewharton:butterknife:7.0.1'
     compile files('libs/tbs_sdk_thirdapp_v2.6.0.1045_36900_sharewithdownload_obfs_20161207_162008.jar')
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    //Material design
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+
 }

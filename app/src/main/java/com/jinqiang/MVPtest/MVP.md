@@ -1,6 +1,6 @@
 ## Android MVP 实践
 
-> 示例代码上传在我的repo [Widget](https://github.com/cherishyan/Widgets)中，并长期更新一些有意思的小组件或者功能。Star~
+>示例代码上传在我的repo [Widget](https://github.com/cherishyan/Widgets)中，并长期更新一些有意思的小组件或者功能。Star~
 
 ---
 
