@@ -36,3 +36,12 @@ mWeb.loadUrl("file:///android_asset/web_page/page.html");
 #### Android MVP 实践
 
 * 详见 [Android MVP.md](./app/src/main/java/com/jinqiang/MVPtest/MVP.md)
+
+#### RecyclerView刷新控件及CoordinatorLayout合用实现
+
+效果：
+
+![IRecyclerView](./app/src/main/java/com/jinqiang/RecyclerViewRefresh/screenshot/recycler.gif)
+
+
+* 详见 [RecyclerView.md](./app/src/main/java/com/jinqiang/RecyclerViewRefresh/RecyclerView.md)
