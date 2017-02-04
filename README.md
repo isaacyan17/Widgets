@@ -45,3 +45,12 @@ mWeb.loadUrl("file:///android_asset/web_page/page.html");
 
 
 * 详见 [RecyclerView.md](./app/src/main/java/com/jinqiang/RecyclerViewRefresh/RecyclerView.md)
+
+#### Material 登录注册界面效果
+
+效果：
+
+![materialLogin](./app/src/main/java/com/jinqiang/materialLogin/screenshot/login.gif)
+
+
+* 详见 [RecyclerView.md](./app/src/main/java/com/jinqiang/materialLogin/MaterialLogin.md)
