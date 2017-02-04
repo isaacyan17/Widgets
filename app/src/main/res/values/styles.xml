@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#B3E5FC</item>
+        <item name="colorPrimaryDark">#40C4FF</item>
+        <item name="colorAccent">#03A9F4</item>
     </style>
 
     <style name="SupportTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -17,4 +17,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">#03a9f4</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimary">#B3E5FC</item>
+        <item name="colorAccent">#ffffff</item>
+    </style>
+    <style name="TextLabel" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorControlActivated">#ffffff</item>
+    </style>
 </resources>
