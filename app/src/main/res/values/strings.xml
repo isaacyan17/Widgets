@@ -19,5 +19,10 @@
     <string name="register_pwd">请输入密码</string>
     <string name="register_pwd_again">请确认密码</string>
     <string name="register_next">下一步</string>
+    <!--bottom navigation bar-->
+    <string name="home">首页</string>
+    <string name="search">搜索</string>
+    <string name="trade">交换</string>
+    <string name="mine">我的</string>
 
 </resources>
