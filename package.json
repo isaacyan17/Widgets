@@ -1,0 +1,24 @@
+{
+  "name": "widgets",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.android.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output Widgets/app/src/main/assets/index.android.bundle --sourcemap-output Widgets/app/src/main/assets/index.android.map --assets-dest Widgets/app/src/main/res/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherishyan/Widgets.git"
+  },
+  "author": "cherishyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cherishyan/Widgets/issues"
+  },
+  "homepage": "https://github.com/cherishyan/Widgets#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-native": "^0.41.2"
+  }
+}
