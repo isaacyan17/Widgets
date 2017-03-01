@@ -1,0 +1,19 @@
+{
+  "entry": "index.android.js",
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr",
+        "transform-runtime",
+        ["import", { "libraryName": "antd-mobile", "libraryDirectory": "lib", "style": "css" }]
+      ]
+    },
+    "production": {
+      "extraBabelPlugins": [
+        "transform-runtime"
+      ]
+    }
+  },
+  "publicPath": "/",
+  "outputPath": "./dist"
+}

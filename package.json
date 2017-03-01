@@ -5,6 +5,9 @@
   "main": "index.android.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start2": "roadhog server",
+    "lint": "eslint --ext .js src test",
+    "precommit": "npm run lint",
     "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output Widgets/app/src/main/assets/index.android.bundle --sourcemap-output Widgets/app/src/main/assets/index.android.map --assets-dest Widgets/app/src/main/res/"
   },
   "repository": {
@@ -18,7 +21,25 @@
   },
   "homepage": "https://github.com/cherishyan/Widgets#readme",
   "dependencies": {
+    "antd-mobile": "^1.0.0",
+    "babel-runtime": "^6.9.2",
+    "dva": "^1.2.1",
     "react": "^15.4.2",
     "react-native": "^0.41.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-dva-hmr": "^0.3.2",
+    "babel-plugin-import": "^1.1.1",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
+    "expect": "^1.20.2",
+    "husky": "^0.12.0",
+    "redbox-react": "^1.3.2",
+    "roadhog": "^0.5.2"
   }
 }

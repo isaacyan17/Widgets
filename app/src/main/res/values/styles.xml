@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#B3E5FC</item>
-        <item name="colorPrimaryDark">#40C4FF</item>
-        <item name="colorAccent">#03A9F4</item>
+        <item name="colorPrimary">#4fc3f7</item>
+        <item name="colorPrimaryDark">#4fc3f7</item>
+        <item name="colorAccent">#4fc3f7</item>
     </style>
 
     <style name="SupportTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -27,5 +27,13 @@
     <style name="TextLabel" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
         <item name="colorControlActivated">#ffffff</item>
+    </style>
+
+    <!--Raised Button style-->
+    <style name="CustomButton" parent="Theme.AppCompat.Light">
+        <!-- 点击高亮时背景颜色 -->
+        <item name="colorControlHighlight">#03A9F4</item>
+        <!-- 按钮正常背景颜色 -->
+        <item name="colorButtonNormal">#4fc3f7</item>
     </style>
 </resources>
