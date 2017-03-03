@@ -1,13 +1,14 @@
 'use strict';
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-class Widgets extends Component {
+export default class Index extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -44,5 +45,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-AppRegistry.registerComponent('reactactivity', () => Widgets);

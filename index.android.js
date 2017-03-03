@@ -5,26 +5,17 @@ import React, {
 import {
   AppRegistry,
   StyleSheet,
-  Text,
-  View
+  Platform
 } from 'react-native';
 
+import Settings from './react_src/js/setting';
+import AppNavigator from './react_src/js/AppNavigator';
 
-class Widgets extends Component {
+export default class Widgets extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          我是 原生项目嵌入的 ReactNative
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      //统一的入口
+      <AppNavigator id='Settings' data='' name='' component={Settings} />
     );
   }
 }
@@ -32,19 +23,10 @@ class Widgets extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: 300,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
 
