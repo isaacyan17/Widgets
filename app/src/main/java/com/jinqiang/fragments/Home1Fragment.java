@@ -2,15 +2,22 @@ package com.jinqiang.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
 
+import com.jinqiang.RecyclerViewRefresh.IRecyclerView;
+import com.jinqiang.fragments.adapter.HomeAdapter;
 import com.jinqiang.widgets.R;
 import com.jinqiang.widgets.ReactActivity;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,7 +25,13 @@ import butterknife.ButterKnife;
 
 public class Home1Fragment extends Fragment {
     @Bind(R.id.click)
-    Button  btn;
+    Button btn;
+    @Bind(R.id.main_recyclerview)
+    IRecyclerView recyclerView;
+
+    private HomeAdapter mAdapter;
+    private ArrayList<String> mList;
+
 
     @Nullable
     @Override
@@ -37,5 +50,43 @@ public class Home1Fragment extends Fragment {
                 startActivity(new Intent(getContext(),ReactActivity.class));
             }
         });
+        /** init **/
+        mList = new ArrayList<>();
+        for(int i = 0; i < 15 ;i++){
+            mList.add("item: " + i );
+        }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
+        recyclerView.setLoadingListener(new IRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable(){
+                    public void run() {
+
+                        mList.clear();
+                        for(int i = 0; i < 15 ;i++){
+                            mList.add("" + i );
+                        }
+                        mAdapter.notifyDataSetChanged();
+                        recyclerView.refreshComplete();
+                    }
+
+                }, 1000);            //refresh data here
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
+        mAdapter = new HomeAdapter(mList);
+        recyclerView.setAdapter(mAdapter);
     }
 }
