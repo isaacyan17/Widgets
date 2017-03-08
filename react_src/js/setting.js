@@ -6,14 +6,17 @@ import {
 	AppRegistry,
 	StyleSheet,
 	Text,
-	View
+	View,
+	BackAndroid,
+	ToastAndroid,
+	Platform
 } from 'react-native';
 import {
 	Button,
 	List
 } from 'antd-mobile';
 
-import Index from './Third';
+import Third from './Third';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -24,15 +27,15 @@ export default class Settings extends Component {
 	}
 
 	_onClick() {
-		//测试点击navigator的点击跳转
-		//方法名和点击事件名一致....
+		/*测试点击navigator的点击跳转
+		方法名和点击事件名一致....*/
 		const navigator = this.props.navigator;
 		if (navigator) {
 			navigator.push({
 				id: 'thirdpage',
 				data: '',
 				name: 'third',
-				component: Index
+				component: Third
 			});
 		}
 	}
@@ -60,6 +63,47 @@ export default class Settings extends Component {
     		</View>
 		)
 	};
+	/*
+	 * 生命周期
+	 */
+	componentDidMount() {
+		this._addBackAndroidListener(this.props.navigator);
+	}
+
+	componentWillUnmount() {
+		this._removeBackAndroidListener();
+	}
+
+	//监听Android返回键
+	_addBackAndroidListener(navigator) {
+			if (Platform.OS === 'android') {
+				var currTime = 0;
+				BackAndroid.addEventListener('hardwareBackPress', () => {
+					if (!navigator) {
+						return false;
+					}
+					const routers = navigator.getCurrentRoutes();
+					if (routers.length == 1) { //在主界面
+						var nowTime = (new Date()).valueOf();
+						if (nowTime - currTime > 2000) {
+							currTime = nowTime;
+							ToastAndroid.show("再按一次退出RN", ToastAndroid.SHORT);
+							return true;
+						}
+						return false;
+					} else { //在其他子页面
+						navigator.pop();
+						return true;
+					}
+				});
+			}
+		}
+		//移除监听
+	_removeBackAndroidListener() {
+		if (Platform.OS === 'android') {
+			BackAndroid.removeEventListener('hardwareBackPress');
+		}
+	}
 }
 
 

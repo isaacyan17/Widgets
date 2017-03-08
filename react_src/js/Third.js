@@ -7,16 +7,27 @@ import {
   Text,
   View
 } from 'react-native';
+import BaseTitleBar from '../component/BaseTitleBar';
 
-export default class Index extends Component {
-  render() {
+export default class Third extends BaseTitleBar {
+
+  constructor(props) {
+    super(props);
+  }
+
+  static defaultProps = {
+    titleText: 'test',
+    titlePosition: 'left'
+  }
+
+  renderContent() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          我是 原生项目嵌入的 ReactNative
+          我是 原生项目嵌入的 ReactNative3
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
