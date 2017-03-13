@@ -18,8 +18,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:supportsRtl="true">
-        <activity android:name=".MainActivity">
+        android:supportsRtl="true"
+        android:name=".ReactApplication">
+        <!-- 怎么会没加.ReactApplication的 ( - -! ) -->
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden">
         <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

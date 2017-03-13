@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<Button
-    android:id="@+id/click"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="20dp"
-    android:text="Fragment2"
-    android:gravity="center"
-    android:textColor="@android:color/white"
-   android:layout_centerInParent="true"
-    android:theme="@style/CustomButton"
-    android:elevation="10dp"
-    />
-</RelativeLayout>
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:maxSuggestionsCount="10"
+        app:hint="输入搜索关键字">
+    </com.mancj.materialsearchbar.MaterialSearchBar>
+    <com.jinqiang.RecyclerViewRefresh.IRecyclerView
+        android:id="@+id/search_recyc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp">
+    </com.jinqiang.RecyclerViewRefresh.IRecyclerView>
+</LinearLayout>

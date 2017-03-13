@@ -12,6 +12,8 @@ import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.jinqiang.fragments.Home2Fragment;
 import com.jinqiang.fragments.Home3Fragment;
 import com.jinqiang.fragments.Home4Fragment;
@@ -20,7 +22,7 @@ import com.jinqiang.fragments.Home1Fragment;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener,DefaultHardwareBackBtnHandler {
     @Bind(R.id.main_fl)
     FrameLayout frameLayout;
     @Bind(R.id.bnb)
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private Fragment mCurrentFragment; //当前Fragment
     private String[] tags = new String[]{"homeFragment","home2Fragment","home3Fragment","home4Fragment"};
 
+    //注册一下fragment的reactmanager;
+    private ReactInstanceManager mReactInstanceManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         toolbar.setTitle(getResources().getString(R.string.home));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);//返回箭头
+
+        /**
+         * Get the reference to the ReactInstanceManager
+         */
+        mReactInstanceManager = ((ReactApplication)getApplication()).getReactNativeHost().getReactInstanceManager();
         initView();
         setDefaultFragment();
     }
@@ -165,6 +175,37 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             Home3Fragment fragment3 = (Home3Fragment) getSupportFragmentManager().findFragmentByTag(tags[2]);
             Home4Fragment fragment4 = (Home4Fragment) getSupportFragmentManager().findFragmentByTag(tags[3]);
             getSupportFragmentManager().beginTransaction().show(fragment).hide(fragment2).hide(fragment3).hide(fragment4).commit();
+        }
+    }
+
+    @Override
+    public void invokeDefaultOnBackPressed() {
+        super.onBackPressed();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onHostPause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onHostResume(this, this);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onBackPressed();
+        } else {
+            super.onBackPressed();
         }
     }
 }

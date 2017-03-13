@@ -24,6 +24,10 @@ allprojects {
             // All of React Native (JS, Android binaries) is installed from npm
             url "$rootDir/node_modules/react-native/android"
         }
+        //不是太清楚以下配置是否有效，目前暂无问题。仍需查验。
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+        mavenLocal()
     }
 }
 

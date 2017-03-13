@@ -41,4 +41,6 @@ dependencies {
     compile project(path: ':BottomNavigationBar')
     // 添加ReactNative模块
     compile 'com.facebook.react:react-native:+'
+    // 尝试添加SearchBar控件
+    compile 'com.github.mancj:MaterialSearchBar:0.6'
 }
