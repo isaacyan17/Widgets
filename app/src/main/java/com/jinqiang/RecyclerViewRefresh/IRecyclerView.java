@@ -274,7 +274,7 @@ public class IRecyclerView extends RecyclerView{
     }
 
     private View getHeaderViewByType(int itemType){
-        if(isHeaderType(itemType))
+        if(!isHeaderType(itemType))
             return null;
         return mHeaderViews.get(itemType - HEADER_INIT_INDEX);
     }
