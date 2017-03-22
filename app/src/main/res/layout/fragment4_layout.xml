@@ -1,17 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<Button
-    android:id="@+id/click"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="20dp"
-    android:text="Fragment4"
-    android:gravity="center"
-    android:textColor="@android:color/white"
-    android:layout_centerInParent="true"
-    android:theme="@style/CustomButton"
-    android:elevation="10dp"
-    />
-</RelativeLayout>
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#66ffffff"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleMarginStart="48dp"
+            android:background="@mipmap/rectangle"
+            app:expandedTitleMarginEnd="64dp">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabTextColor="#ffffff"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.8"
+                android:layout_marginTop="120dp"
+                android:paddingBottom="15dp"
+                />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/toolbar1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/layout1_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="布局一"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/toolbar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+                        <TextView
+                            android:id="@+id/layout2_tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="布局二"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp"/>
+                        <TextView
+                            android:id="@+id/layout2_tv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="布局二"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <com.jinqiang.RecyclerViewRefresh.IRecyclerView
+        android:id="@+id/recyclerview"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</android.support.design.widget.CoordinatorLayout>

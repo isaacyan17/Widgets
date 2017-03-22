@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     FrameLayout frameLayout;
     @Bind(R.id.bnb)
     BottomNavigationBar bar;
-    @Bind(R.id.main_toolbar)
-    Toolbar toolbar;
+//    @Bind(R.id.main_toolbar)
+//    Toolbar toolbar;
 
     FragmentManager manager;
     private Home1Fragment home1Fragment;
@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         /** 首页setTitle 在setSupportActionBar之前调用，不然无效 **/
-        toolbar.setTitle(getResources().getString(R.string.home));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);//返回箭头
+//        toolbar.setTitle(getResources().getString(R.string.home));
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);//返回箭头
 
         /**
          * Get the reference to the ReactInstanceManager
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 //                    transaction.replace(R.id.main_fl, homeFragment);
                 }
                 mCurrentFragment = home1Fragment;
-                toolbar.setTitle(getResources().getString(R.string.home));
+//                toolbar.setTitle(getResources().getString(R.string.home));
                 break;
             case 1:
                 if(home2Fragment == null){
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                     transaction.hide(mCurrentFragment).show(home2Fragment);
                 }
                 mCurrentFragment = home2Fragment;
-                toolbar.setTitle(getResources().getString(R.string.search));
+//                toolbar.setTitle(getResources().getString(R.string.search));
                 break;
             case 2:
                 if(home3Fragment == null){
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                     transaction.hide(mCurrentFragment).show(home3Fragment);
                 }
                 mCurrentFragment = home3Fragment;
-                toolbar.setTitle(getResources().getString(R.string.trade));
+//                toolbar.setTitle(getResources().getString(R.string.trade));
                 break;
             case 3:
                 if(home4Fragment == null){
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                     transaction.hide(mCurrentFragment).show(home4Fragment);
                 }
                 mCurrentFragment = home4Fragment;
-                toolbar.setTitle(getResources().getString(R.string.mine));
+//                toolbar.setTitle(getResources().getString(R.string.mine));
                 break;
             default:
                 break;

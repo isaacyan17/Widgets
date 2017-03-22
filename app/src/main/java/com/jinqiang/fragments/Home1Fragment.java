@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,8 @@ public class Home1Fragment extends Fragment {
     Button btn;
     @Bind(R.id.main_recyclerview)
     IRecyclerView recyclerView;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     private HomeAdapter mAdapter;
     private ArrayList<String> mList;
@@ -44,6 +48,9 @@ public class Home1Fragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
+        /**  我觉得acitivity中有这个替换，fragment中也需要声明   **/
+        toolbar.setTitle(getResources().getString(R.string.home));
+//        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

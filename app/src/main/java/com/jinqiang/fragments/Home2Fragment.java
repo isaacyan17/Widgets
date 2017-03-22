@@ -3,7 +3,9 @@ package com.jinqiang.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,8 @@ public class Home2Fragment extends Fragment implements MaterialSearchBar.OnSearc
     IRecyclerView recyclerView;
     @Bind(R.id.search_bar)
     MaterialSearchBar searchBar;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +41,10 @@ public class Home2Fragment extends Fragment implements MaterialSearchBar.OnSearc
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
+        /**  我觉得acitivity中有这个替换，fragment中也需要声明   **/
+//        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setTitle(getResources().getString(R.string.search));
+
     }
 
     @Override
