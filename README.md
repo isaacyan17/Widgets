@@ -233,3 +233,21 @@ public void select(boolean setActiveColor, int animationDuration) {
 ```
 
 `BottomNavigationTab`中在动画部分添加一个判断控制即可。
+
+#### React-native 相关实践
+
+
+详见 **Home3Fragment**,**react-src**
+
+
+
+---
+
+
+#### Android CollapsingToolbarLayout 和ToolBar多种实践
+
+![CollapsingToolbarLayout](./app/src/main/java/com/jinqiang/fragments/screenshot/collapsinglayout.gif)
+
+详见 [Home4fragment](./app/src/main/java/com/jinqiang/fragments/Home4Fragment)
+
+---

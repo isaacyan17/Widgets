@@ -65,6 +65,7 @@ public class Home4Fragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
+        /**布局切换抖动是  android:fitsSystemWindows="true" 的属性问题  **/
 //        iRecyclerView = (IRecyclerView) this.findViewById(R.id.recyclerview);
         /**  我觉得acitivity中有这个替换，fragment中也需要声明   **/
 //        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
