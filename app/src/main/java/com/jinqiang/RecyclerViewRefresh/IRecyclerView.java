@@ -87,6 +87,10 @@ public class IRecyclerView extends RecyclerView{
         }
     }
 
+    public void setPullToRefreshEnabled(boolean enabled){
+        PullToRefreshEnabled = enabled;
+    }
+
     public void setNoMore(boolean noMore){
         isLoadingData = false;
         isNoMore = noMore;
