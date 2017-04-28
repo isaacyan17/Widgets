@@ -251,3 +251,9 @@ public void select(boolean setActiveColor, int animationDuration) {
 详见 [Home4fragment](./app/src/main/java/com/jinqiang/fragments/Home4Fragment)
 
 ---
+
+#### Canvas Xfermode 绘制引导页蒙层
+
+详见： http://www.jianshu.com/p/4f9fbcce3bf8
+
+---
