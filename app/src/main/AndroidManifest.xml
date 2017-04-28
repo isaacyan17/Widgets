@@ -70,7 +70,8 @@
 
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
         <activity android:name=".ReactActivity"/>
-
+        <activity android:name="com.jinqiang.fragments.ui.ActiveGuideActivity"
+            android:theme="@style/Transparent"/>
     </application>
 
 </manifest>

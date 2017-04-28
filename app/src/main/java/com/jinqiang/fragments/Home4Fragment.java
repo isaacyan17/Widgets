@@ -1,5 +1,6 @@
 package com.jinqiang.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.jinqiang.RecyclerViewRefresh.IRecyclerView;
 import com.jinqiang.fragments.adapter.testAdapter;
+import com.jinqiang.fragments.ui.ActiveGuideActivity;
 import com.jinqiang.widgets.R;
 
 import java.util.ArrayList;
@@ -165,6 +168,19 @@ public class Home4Fragment extends Fragment {
                 }
             }
         });
+
+        Intent i = new Intent(getActivity(), ActiveGuideActivity.class);
+        int[] location = new int[2];
+        layout1_tv.getLocationInWindow(location);
+        int[] center = new int[2];
+        Log.v("yjq","weizhi:"+location[0]+"  "+location[1]);
+
+        center[0] = location[0] + layout1_tv.getWidth() / 2;
+        center[1] = location[1] + layout1_tv.getHeight() / 2;
+        Log.v("yjq","center:"+center[0]+"  "+center[1]);
+
+        i.putExtra("location",center);
+        startActivity(i);
     }
 
     public void setHeader(IRecyclerView view){

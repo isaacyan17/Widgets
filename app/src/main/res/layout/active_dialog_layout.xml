@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <com.jinqiang.fragments.ui.ActiveView
+       android:id="@+id/activelayout"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       />
+    <ImageView
+        android:id="@+id/ready_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/active_img"
+        android:paddingTop="60dp"
+        android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>
