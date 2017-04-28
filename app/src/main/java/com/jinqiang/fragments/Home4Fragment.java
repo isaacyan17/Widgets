@@ -173,13 +173,11 @@ public class Home4Fragment extends Fragment {
         int[] location = new int[2];
         layout1_tv.getLocationInWindow(location);
         int[] center = new int[2];
-        Log.v("yjq","weizhi:"+location[0]+"  "+location[1]);
 
         center[0] = location[0] + layout1_tv.getWidth() / 2;
         center[1] = location[1] + layout1_tv.getHeight() / 2;
-        Log.v("yjq","center:"+center[0]+"  "+center[1]);
 
-        i.putExtra("location",center);
+//        i.putExtra("location",center);
         startActivity(i);
     }
 
