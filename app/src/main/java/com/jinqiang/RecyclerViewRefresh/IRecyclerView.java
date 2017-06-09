@@ -111,6 +111,18 @@ public class IRecyclerView extends RecyclerView{
     }
 
     /**
+     * 设置无数据界面
+     * @param emptyView
+     */
+    public void setEmptyView(View emptyView) {
+        this.mEmptyView = emptyView;
+        mDataObserver.onChanged();
+    }
+
+    public View getEmptyView() {
+        return mEmptyView;
+    }
+    /**
      * 上拉动作触发加载布局
      * @param state
      */
