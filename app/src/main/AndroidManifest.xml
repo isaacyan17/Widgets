@@ -23,11 +23,11 @@
         <!-- 怎么会没加.ReactApplication的 ( - -! ) -->
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden">
-        <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
 
-        <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
         </activity>
         <!-- WelcomeActivity -->
         <!--<activity android:name="com.jinqiang.welcomebanner.WelcomeActivity">-->
@@ -39,11 +39,11 @@
         <!--</activity>-->
 
         <activity android:name="com.jinqiang.welcomebanner.WebWelcomeActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name="com.jinqiang.RecyclerViewRefresh.RecyclerViewMainActivity"

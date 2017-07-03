@@ -1,10 +1,13 @@
 package com.jinqiang.welcomebanner;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.JavascriptInterface;
 
+import com.jinqiang.widgets.MainActivity;
 import com.jinqiang.widgets.R;
 import com.tencent.smtt.sdk.WebView;
 
@@ -23,5 +26,23 @@ public class WebWelcomeActivity extends AppCompatActivity{
         mWeb.loadUrl("file:///android_asset/web_page/page.html");
         mWeb.setVerticalScrollBarEnabled(false);
         mWeb.getSettings().setJavaScriptEnabled(true);
+        WebWelcomeActivity.JSKit jsKit = new WebWelcomeActivity.JSKit(this);
+        mWeb.addJavascriptInterface(jsKit, "Widgets");
+    }
+
+    class JSKit{
+        private WebWelcomeActivity context;
+
+        public JSKit(WebWelcomeActivity context) {
+            this.context = context;
+        }
+
+        @JavascriptInterface
+        public void jumpMainActivity(){
+            Intent intent = new Intent(context, MainActivity.class);
+            startActivity(intent);
+            //TODO transition
+            finish();
+        }
     }
 }

@@ -6,6 +6,22 @@
     bottom: 0;
     overflow: hidden;            
 }
+.jump{
+    position: absolute;
+    bottom: 10%;
+    left: 77%;
+    width: 120px;
+    border-width: 1px;
+    border-radius: 7px;
+    border-color: #ffffff;
+    background-color: #ffd44d;
+}
+
+.jump p{
+    font-size: 13px;
+    line-height: 10px;
+    text-align: center;
+}
 .page{
     font-size: 72px;
     line-height: 320px;

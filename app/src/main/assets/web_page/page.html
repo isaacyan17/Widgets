@@ -21,7 +21,12 @@
         <div class="wp-inner">
             <div class="page page1"><img src="./imgs/img1.jpg"></div>
             <div class="page page2"><img src="./imgs/img2.jpg"></div>
-            <div class="page page3"><img src="./imgs/img3.jpg"></div>
+            <div class="page page3">
+            <img src="./imgs/img3.jpg">
+            <div class="jump" onclick="jump()">
+                <p>立即体验</p>
+            </div>
+            </div>
             <!-- <div class="page page4">4</div> -->
         </div>
     </div>
@@ -29,6 +34,19 @@
     <script src="./js/js.fullpage.js"></script>
     <script>
         document.getElementsByClassName('wp-inner')[0].fullpage({dir: 'h'});
+        function jump () {
+            var data = document.getElementsByClassName('jump').value;
+            try {
+                Widgets.jumpMainActivity();
+            } catch(e) {
+                setupWebViewJavascriptBridge(function(bridge) {
+                            setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('jump',{'param':data});
+                            });
+                        });
+                console.log(e);
+            }
+        }
     </script>
 </body>
 </html>
