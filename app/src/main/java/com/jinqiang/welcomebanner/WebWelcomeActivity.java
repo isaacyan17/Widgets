@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.JavascriptInterface;
 
+import com.jinqiang.materialLogin.LoginActivity;
 import com.jinqiang.widgets.MainActivity;
 import com.jinqiang.widgets.R;
 import com.tencent.smtt.sdk.WebView;
@@ -14,7 +15,7 @@ import com.tencent.smtt.sdk.WebView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class WebWelcomeActivity extends AppCompatActivity{
+public class WebWelcomeActivity extends AppCompatActivity {
     @Bind(R.id.web_wel)
     WebView mWeb;
 
@@ -30,7 +31,7 @@ public class WebWelcomeActivity extends AppCompatActivity{
         mWeb.addJavascriptInterface(jsKit, "Widgets");
     }
 
-    class JSKit{
+    class JSKit {
         private WebWelcomeActivity context;
 
         public JSKit(WebWelcomeActivity context) {
@@ -38,8 +39,9 @@ public class WebWelcomeActivity extends AppCompatActivity{
         }
 
         @JavascriptInterface
-        public void jumpMainActivity(){
-            Intent intent = new Intent(context, MainActivity.class);
+        public void jumpMainActivity() {
+            //名字或许能再霸气一点
+            Intent intent = new Intent(context, LoginActivity.class);
             startActivity(intent);
             //TODO transition
             finish();

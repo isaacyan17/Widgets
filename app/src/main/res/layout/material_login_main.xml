@@ -101,10 +101,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:background="@drawable/btn_shape"
-                    android:paddingBottom="20dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="60dp"
                     android:paddingRight="60dp"
-                    android:paddingTop="20dp"
+                    android:paddingTop="15dp"
                     android:text="@string/login_btnok"
                     android:textColor="#03a9f4"
                     android:textSize="18sp" />
