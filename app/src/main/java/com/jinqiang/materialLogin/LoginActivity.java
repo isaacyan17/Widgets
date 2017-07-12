@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.jinqiang.Utils.LogUtils;
 import com.jinqiang.Utils.StringUtils;
+import com.jinqiang.Utils.progressDialog.ProgressBarUtils;
 import com.jinqiang.config.Config;
 import com.jinqiang.materialLogin.net.LoginNet;
 import com.jinqiang.widgets.R;
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button comfirm;
 
     private LoginNet mNetModel;
+    ProgressBarUtils mProgress;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fab.setOnClickListener(this);
         comfirm.setOnClickListener(this);
         initNetModel();
+        mProgress = new ProgressBarUtils(this);
     }
 
     private void initNetModel() {
@@ -84,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     //账户或密码为空
                     Toast.makeText(this, "账户或密码为空", Toast.LENGTH_SHORT).show();
                 } else {
+                    mProgress.show();
                     checkLogin(name, pwd);
                 }
                 break;
@@ -106,11 +110,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onError(Throwable e) {
+                        mProgress.hide();
                         e.printStackTrace();
                     }
 
                     @Override
                     public void onNext(String s) {
+                        mProgress.hide();
                         LogUtils.getLogger().v(s);
 
                         //TODO

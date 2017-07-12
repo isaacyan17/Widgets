@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
+    <!--progressDialog color-->
+    <color name="progressColor">#03a9f4</color>
 </resources>
