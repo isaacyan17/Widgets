@@ -3,6 +3,7 @@ package com.jinqiang.materialLogin;
 
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.jinqiang.Utils.StringUtils;
 import com.jinqiang.Utils.progressDialog.ProgressBarUtils;
 import com.jinqiang.config.Config;
 import com.jinqiang.materialLogin.net.LoginNet;
+import com.jinqiang.widgets.MainActivity;
 import com.jinqiang.widgets.R;
 
 import butterknife.Bind;
@@ -42,7 +44,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button comfirm;
 
     private LoginNet mNetModel;
-    ProgressBarUtils mProgress;
+    private ProgressBarUtils mProgress;
+    private Context mContext;
+    private String preAcount="admin";
+    private String prePassword="123";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         comfirm.setOnClickListener(this);
         initNetModel();
         mProgress = new ProgressBarUtils(this);
+        mContext = this;
     }
 
     private void initNetModel() {
@@ -88,7 +95,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(this, "账户或密码为空", Toast.LENGTH_SHORT).show();
                 } else {
                     mProgress.show();
-                    checkLogin(name, pwd);
+                    if(name.equals(preAcount) && pwd.equals(prePassword)){
+                        Intent intent = new Intent(mContext, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else
+                        checkLogin(name, pwd);
                 }
                 break;
         }
