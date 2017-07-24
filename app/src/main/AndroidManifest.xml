@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jinqiang.widgets">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -12,33 +12,35 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- react-native 调试界面 -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <application
+        android:name=".ReactApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
         android:supportsRtl="true"
-        android:name=".ReactApplication">
+        android:theme="@style/AppTheme">
         <!-- 怎么会没加.ReactApplication的 ( - -! ) -->
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <!-- WelcomeActivity -->
+        <!--<activity android:name="com.jinqiang.welcomebanner.WelcomeActivity">-->
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
 
         <!--<category android:name="android.intent.category.LAUNCHER" />-->
         <!--</intent-filter>-->
-        </activity>
-        <!-- WelcomeActivity -->
-        <!--<activity android:name="com.jinqiang.welcomebanner.WelcomeActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name="com.jinqiang.welcomebanner.WebWelcomeActivity">
+        <activity android:name="com.jinqiang.welcomebanner.WebWelcomeActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,27 +48,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.jinqiang.RecyclerViewRefresh.RecyclerViewMainActivity"
+        <activity
+            android:name="com.jinqiang.RecyclerViewRefresh.RecyclerViewMainActivity"
             android:theme="@style/SupportTheme">
             <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
         <!-- Material Login -->
-        <activity android:name="com.jinqiang.materialLogin.LoginActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity android:name="com.jinqiang.materialLogin.RegisterActivity"
-            android:theme="@style/Translucent"
+        <activity
+            android:name="com.jinqiang.materialLogin.LoginActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
-        <activity android:name=".ReactActivity"/>
-        <activity android:name="com.jinqiang.fragments.ui.ActiveGuideActivity"
-            android:theme="@style/Transparent"/>
+        <activity
+            android:name="com.jinqiang.materialLogin.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Translucent" />
+
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <activity android:name=".ReactActivity" />
+        <activity
+            android:name="com.jinqiang.fragments.ui.ActiveGuideActivity"
+            android:theme="@style/Transparent" />
     </application>
 
 </manifest>
