@@ -46,8 +46,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private LoginNet mNetModel;
     private ProgressBarUtils mProgress;
     private Context mContext;
-    private String preAcount="admin";
-    private String prePassword="123";
+    private String preAcount = "123";
+    private String prePassword = "123";
 
 
     @Override
@@ -95,11 +95,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(this, "账户或密码为空", Toast.LENGTH_SHORT).show();
                 } else {
                     mProgress.show();
-                    if(name.equals(preAcount) && pwd.equals(prePassword)){
+                    if (name.equals(preAcount) && pwd.equals(prePassword)) {
                         Intent intent = new Intent(mContext, MainActivity.class);
                         startActivity(intent);
                         finish();
-                    }else
+                    } else
                         checkLogin(name, pwd);
                 }
                 break;

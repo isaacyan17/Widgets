@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.jinqiang.widgets.MainActivity"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <!-- weight设置宽度(高度)加剩余空间的占比 -->
-    <FrameLayout
-        android:id="@+id/main_fl"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.jinqiang.widgets.MainActivity">
 
-    <com.ashokvarma.bottomnavigation.BottomNavigationBar
-        android:id="@+id/bnb"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/main_toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        <!-- weight设置宽度(高度)加剩余空间的占比 -->
+        <FrameLayout
+            android:id="@+id/main_fl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.ashokvarma.bottomnavigation.BottomNavigationBar
+            android:id="@+id/bnb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/main_nv_menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/main_nv_menu" />
+
+</android.support.v4.widget.DrawerLayout>

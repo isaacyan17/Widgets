@@ -1,12 +1,21 @@
 package com.jinqiang.widgets;
 
+import android.graphics.Color;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 
@@ -22,13 +31,20 @@ import com.jinqiang.fragments.Home1Fragment;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener,DefaultHardwareBackBtnHandler {
+public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener, DefaultHardwareBackBtnHandler {
     @Bind(R.id.main_fl)
     FrameLayout frameLayout;
     @Bind(R.id.bnb)
     BottomNavigationBar bar;
-//    @Bind(R.id.main_toolbar)
+    //    @Bind(R.id.main_toolbar)
 //    Toolbar toolbar;
+    @Bind(R.id.main_toolBar)
+    Toolbar toolbar;
+    @Bind(R.id.main_nv_menu)
+    NavigationView navigationView;
+    @Bind(R.id.main_drawerLayout)
+    DrawerLayout drawerLayout;
+
 
     FragmentManager manager;
     private Home1Fragment home1Fragment;
@@ -36,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private Home3Fragment home3Fragment;
     private Home4Fragment home4Fragment;
     private Fragment mCurrentFragment; //当前Fragment
-    private String[] tags = new String[]{"homeFragment","home2Fragment","home3Fragment","home4Fragment"};
+    private String[] tags = new String[]{"homeFragment", "home2Fragment", "home3Fragment", "home4Fragment"};
 
     //注册一下fragment的reactmanager;
     private ReactInstanceManager mReactInstanceManager;
@@ -54,87 +70,114 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         /**
          * Get the reference to the ReactInstanceManager
          */
-        mReactInstanceManager = ((ReactApplication)getApplication()).getReactNativeHost().getReactInstanceManager();
+        mReactInstanceManager = ((ReactApplication) getApplication()).getReactNativeHost().getReactInstanceManager();
         initView();
         setDefaultFragment();
+        /** 初始化navigationView **/
+        initNavigationView();
     }
 
-    private void initView(){
+    private void initNavigationView() {
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitleTextColor(Color.WHITE);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.setChecked(true);
+                drawerLayout.closeDrawers();
+                return true;
+            }
+        });
+    }
+
+
+    private void initView() {
         bar.setMode(BottomNavigationBar.MODE_FIXED);
         bar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
         bar
-                .addItem(new BottomNavigationItem(R.mipmap.home,getResources().getString(R.string.home))/*.setActiveColor("#18ffff")*/)
-                .addItem(new BottomNavigationItem(R.mipmap.search,getResources().getString(R.string.search))/*.setActiveColor("#ff9800")*/)
-                .addItem(new BottomNavigationItem(R.mipmap.trade,getResources().getString(R.string.trade))/*.setActiveColor("#ffab91")*/)
-                .addItem(new BottomNavigationItem(R.mipmap.mine,getResources().getString(R.string.mine))/*.setActiveColor("#ff4081")*/)
+                .addItem(new BottomNavigationItem(R.mipmap.home, getResources().getString(R.string.home))/*.setActiveColor("#18ffff")*/)
+                .addItem(new BottomNavigationItem(R.mipmap.search, getResources().getString(R.string.search))/*.setActiveColor("#ff9800")*/)
+                .addItem(new BottomNavigationItem(R.mipmap.trade, getResources().getString(R.string.trade))/*.setActiveColor("#ffab91")*/)
+                .addItem(new BottomNavigationItem(R.mipmap.mine, getResources().getString(R.string.mine))/*.setActiveColor("#ff4081")*/)
                 .setIconAnimation(false)
                 .setLabelTextSize(12)
                 .initialise();
         bar.setTabSelectedListener(this);
     }
 
-    private void setDefaultFragment(){
+    private void setDefaultFragment() {
         manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         home1Fragment = new Home1Fragment();
         transaction.add(R.id.main_fl, home1Fragment);
         transaction.commit();
         mCurrentFragment = home1Fragment;
+        toolbar.setTitle(getResources().getString(R.string.home));
     }
 
     @Override
     public void onTabSelected(int position) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        switch (position){
+        switch (position) {
             case 0:
-                if(home1Fragment == null){
+                if (home1Fragment == null) {
                     home1Fragment = new Home1Fragment();
                 }
                 //替换replace方法为hide或show,防止反复实例化Fragment。
-                if(!home1Fragment.isAdded()){
-                    transaction.hide(mCurrentFragment).add(R.id.main_fl, home1Fragment,tags[position]);
-                }else {
+                if (!home1Fragment.isAdded()) {
+                    transaction.hide(mCurrentFragment).add(R.id.main_fl, home1Fragment, tags[position]);
+                } else {
                     transaction.hide(mCurrentFragment).show(home1Fragment);
 //                    transaction.replace(R.id.main_fl, homeFragment);
                 }
                 mCurrentFragment = home1Fragment;
-//                toolbar.setTitle(getResources().getString(R.string.home));
+                toolbar.setTitle(getResources().getString(R.string.home));
+                toolbar.setVisibility(View.VISIBLE);
+
                 break;
             case 1:
-                if(home2Fragment == null){
+                if (home2Fragment == null) {
                     home2Fragment = new Home2Fragment();
                 }
 //                    transaction.replace(R.id.main_fl,home2Fragment);
-                if(!home2Fragment.isAdded()){
-                    transaction.hide(mCurrentFragment).add(R.id.main_fl,home2Fragment,tags[position]);
-                }else {
+                if (!home2Fragment.isAdded()) {
+                    transaction.hide(mCurrentFragment).add(R.id.main_fl, home2Fragment, tags[position]);
+                } else {
                     transaction.hide(mCurrentFragment).show(home2Fragment);
                 }
                 mCurrentFragment = home2Fragment;
-//                toolbar.setTitle(getResources().getString(R.string.search));
+                toolbar.setTitle(getResources().getString(R.string.search));
+                toolbar.setVisibility(View.VISIBLE);
+
                 break;
             case 2:
-                if(home3Fragment == null){
+                if (home3Fragment == null) {
                     home3Fragment = new Home3Fragment();
                 }
 //                    transaction.replace(R.id.main_fl,home3Fragment);
 
-                if(!home3Fragment.isAdded()){
-                    transaction.hide(mCurrentFragment).add(R.id.main_fl,home3Fragment,tags[position]);
-                }else {
+                if (!home3Fragment.isAdded()) {
+                    transaction.hide(mCurrentFragment).add(R.id.main_fl, home3Fragment, tags[position]);
+                } else {
                     transaction.hide(mCurrentFragment).show(home3Fragment);
                 }
                 mCurrentFragment = home3Fragment;
-//                toolbar.setTitle(getResources().getString(R.string.trade));
+                toolbar.setTitle(getResources().getString(R.string.trade));
+                toolbar.setVisibility(View.VISIBLE);
+
                 break;
             case 3:
-                if(home4Fragment == null){
+                toolbar.setVisibility(View.GONE);
+                if (home4Fragment == null) {
                     home4Fragment = new Home4Fragment();
                 }
 //                    transaction.replace(R.id.main_fl,home4Fragment);
-                if(!home4Fragment.isAdded()){
-                    transaction.hide(mCurrentFragment).add(R.id.main_fl,home4Fragment,tags[position]);
-                }else {
+                if (!home4Fragment.isAdded()) {
+                    transaction.hide(mCurrentFragment).add(R.id.main_fl, home4Fragment, tags[position]);
+                } else {
                     transaction.hide(mCurrentFragment).show(home4Fragment);
                 }
                 mCurrentFragment = home4Fragment;
@@ -164,12 +207,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     /**
      * 低内存非正常销毁时，拿到临时数据，并通过tag拿到各fragment,防止重叠。
+     *
      * @param saveInstanceBundle
      */
-    private void checkState(Bundle saveInstanceBundle){
-        if(saveInstanceBundle == null){
+    private void checkState(Bundle saveInstanceBundle) {
+        if (saveInstanceBundle == null) {
             setDefaultFragment();
-        }else{
+        } else {
             Home1Fragment fragment = (Home1Fragment) getSupportFragmentManager().findFragmentByTag(tags[0]);
             Home2Fragment fragment2 = (Home2Fragment) getSupportFragmentManager().findFragmentByTag(tags[1]);
             Home3Fragment fragment3 = (Home3Fragment) getSupportFragmentManager().findFragmentByTag(tags[2]);
@@ -182,6 +226,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     public void invokeDefaultOnBackPressed() {
         super.onBackPressed();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -207,5 +252,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_nv_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            drawerLayout.openDrawer(GravityCompat.START);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
