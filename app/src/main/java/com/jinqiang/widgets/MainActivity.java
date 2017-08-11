@@ -17,12 +17,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.bumptech.glide.Glide;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
+import com.jinqiang.Utils.GlideRoundTransform;
+import com.jinqiang.config.Config;
 import com.jinqiang.fragments.Home2Fragment;
 import com.jinqiang.fragments.Home3Fragment;
 import com.jinqiang.fragments.Home4Fragment;
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     NavigationView navigationView;
     @Bind(R.id.main_drawerLayout)
     DrawerLayout drawerLayout;
+    //    @Bind(R.id.head_img)
+    ImageView mHeadImg;
 
 
     FragmentManager manager;
@@ -91,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 return true;
             }
         });
+        View headerView = navigationView.getHeaderView(0);
+        if (headerView != null) {
+            mHeadImg = (ImageView) headerView.findViewById(R.id.head_img);
+            Glide.with(this).load(Config.HEAD_FONT_URL).asBitmap().centerCrop().transform(new GlideRoundTransform(this, 100)).into(mHeadImg);
+        }
     }
 
 

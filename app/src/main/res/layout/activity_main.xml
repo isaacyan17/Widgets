@@ -41,6 +41,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="left"
         android:fitsSystemWindows="true"
+        app:headerLayout="@layout/main_nv_header"
         app:menu="@menu/main_nv_menu" />
 
 </android.support.v4.widget.DrawerLayout>
