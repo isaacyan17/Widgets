@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jinqiang.Utils.LogUtils;
 import com.jinqiang.Utils.StringUtils;
 import com.jinqiang.Utils.progressDialog.ProgressBarUtils;
@@ -25,6 +27,7 @@ import com.jinqiang.widgets.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -63,7 +66,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initNetModel() {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
+
         Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
 //                .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

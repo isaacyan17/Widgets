@@ -1,5 +1,7 @@
 package com.jinqiang.widgets;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private Home4Fragment home4Fragment;
     private Fragment mCurrentFragment; //当前Fragment
     private String[] tags = new String[]{"homeFragment", "home2Fragment", "home3Fragment", "home4Fragment"};
+    private Context mContext;
 
     //注册一下fragment的reactmanager;
     private ReactInstanceManager mReactInstanceManager;
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = this;
         ButterKnife.bind(this);
         /** 首页setTitle 在setSupportActionBar之前调用，不然无效 **/
 //        toolbar.setTitle(getResources().getString(R.string.home));
@@ -92,6 +96,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item1:
+                        startActivity(new Intent(mContext,ReactActivity.class));
+                        break;
+                }
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
                 return true;

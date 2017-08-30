@@ -47,4 +47,7 @@ dependencies {
     compile 'com.facebook.react:react-native:+'
     // 尝试添加SearchBar控件
     compile 'com.github.mancj:MaterialSearchBar:0.6'
+    //chrome里监听所有http请求，查看本地Database内容
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 }

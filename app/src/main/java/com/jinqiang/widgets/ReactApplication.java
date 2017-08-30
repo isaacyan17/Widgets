@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.facebook.stetho.Stetho;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,5 +33,11 @@ public class ReactApplication extends Application implements com.facebook.react.
     @Override
     public ReactNativeHost getReactNativeHost() {
         return mReactNativeHost;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Stetho.initializeWithDefaults(this);
     }
 }
