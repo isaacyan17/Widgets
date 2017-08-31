@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.jinqiang.RecyclerViewRefresh.IRecyclerView;
 import com.jinqiang.widgets.R;

@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     ImageView mHeadImg;
 
 
-    FragmentManager manager;
+    private FragmentManager manager;
     private Home1Fragment home1Fragment;
     private Home2Fragment home2Fragment;
     private Home3Fragment home3Fragment;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     //注册一下fragment的reactmanager;
     private ReactInstanceManager mReactInstanceManager;
+    //search图标的显隐控制
+    private MenuItem searchMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.item1:
-                        startActivity(new Intent(mContext,ReactActivity.class));
+                        startActivity(new Intent(mContext, ReactActivity.class));
                         break;
                 }
                 item.setChecked(true);
@@ -141,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     @Override
     public void onTabSelected(int position) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        searchMenuItem.setVisible(false);
         switch (position) {
             case 0:
                 if (home1Fragment == null) {
@@ -171,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 mCurrentFragment = home2Fragment;
                 toolbar.setTitle(getResources().getString(R.string.search));
                 toolbar.setVisibility(View.VISIBLE);
+                searchMenuItem.setVisible(true);
 
                 break;
             case 2:
@@ -276,7 +281,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_nv_menu, menu);
+        getMenuInflater().inflate(R.menu.main_toobar_menu, menu);
+        searchMenuItem = menu.findItem(R.id.action_search);
         return true;
     }
 
@@ -286,6 +292,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             drawerLayout.openDrawer(GravityCompat.START);
             return true;
         }
+        if (item.getItemId() == R.id.action_search) {
+
+        }
         return super.onOptionsItemSelected(item);
     }
+
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        if (mCurrentFragment instanceof Home2Fragment) {
+//            menu.findItem(R.id.action_search).setVisible(true);
+//        } else {
+//            menu.findItem(R.id.action_search).setVisible(false);
+//        }
+//        return super.onPrepareOptionsMenu(menu);
+//    }
 }
