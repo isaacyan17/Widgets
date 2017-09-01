@@ -293,18 +293,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             return true;
         }
         if (item.getItemId() == R.id.action_search) {
-
+            if(home2Fragment != null){
+                home2Fragment.handleSearchToggle();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        if (mCurrentFragment instanceof Home2Fragment) {
-//            menu.findItem(R.id.action_search).setVisible(true);
-//        } else {
-//            menu.findItem(R.id.action_search).setVisible(false);
-//        }
-//        return super.onPrepareOptionsMenu(menu);
-//    }
+
 }
