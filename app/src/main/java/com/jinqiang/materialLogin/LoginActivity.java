@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jinqiang.Utils.LogUtils;
+import com.jinqiang.Utils.SharedpreferencesUtils;
 import com.jinqiang.Utils.StringUtils;
 import com.jinqiang.Utils.progressDialog.ProgressBarUtils;
 import com.jinqiang.config.Config;
@@ -106,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     mProgress.show();
                     if (name.equals(preAcount) && pwd.equals(prePassword)) {
+                        SharedpreferencesUtils.setLoginState(mContext,preAcount);
                         Intent intent = new Intent(mContext, MainActivity.class);
                         startActivity(intent);
                         finish();

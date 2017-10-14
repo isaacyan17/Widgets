@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.JavascriptInterface;
 
+import com.jinqiang.Utils.SharedpreferencesUtils;
 import com.jinqiang.materialLogin.LoginActivity;
 import com.jinqiang.widgets.MainActivity;
 import com.jinqiang.widgets.R;
@@ -41,10 +42,18 @@ public class WebWelcomeActivity extends AppCompatActivity {
         @JavascriptInterface
         public void jumpMainActivity() {
             //名字或许能再霸气一点
-            Intent intent = new Intent(context, LoginActivity.class);
-            startActivity(intent);
-            //TODO transition
-            finish();
+            //这里判断用户登录是否失效
+            boolean loginState = SharedpreferencesUtils.getLoginState(context);
+            if(!loginState) {
+                Intent intent = new Intent(context, LoginActivity.class);
+                startActivity(intent);
+                //TODO transition
+                finish();
+            }else{
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 }
