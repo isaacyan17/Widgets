@@ -257,3 +257,15 @@ public void select(boolean setActiveColor, int animationDuration) {
 详见： http://www.jianshu.com/p/4f9fbcce3bf8
 
 ---
+
+#### HorizontalTimeLineLinearLayout
+
+> 类似横向的时间轴，主要是计算单个View的padding值作为当前timeline point的x值，再将起点和终点绘制一条线即可。
+
+详见 [TimeLineShowActivity](./app/src/main/java/com/jinqiang/fragments/ui/TimeLineShowActivity)
+
+效果：
+
+![HorizontalTimeLineLinearLayout](./app/src/main/java/com/jinqiang/fragments/screenshot/horizontaltimeline.png)
+
+

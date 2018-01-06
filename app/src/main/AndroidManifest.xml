@@ -72,6 +72,7 @@
         <activity
             android:name="com.jinqiang.fragments.ui.ActiveGuideActivity"
             android:theme="@style/Transparent" />
+        <activity android:name="com.jinqiang.fragments.ui.TimeLineShowActivity"/>
     </application>
 
 </manifest>
