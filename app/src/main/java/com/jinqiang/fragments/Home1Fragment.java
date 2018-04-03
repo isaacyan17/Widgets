@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jinqiang.RecyclerViewRefresh.IRecyclerView;
 import com.jinqiang.fragments.adapter.HomeAdapter;
 import com.jinqiang.widgets.R;
@@ -54,7 +55,8 @@ public class Home1Fragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),ReactActivity.class));
+                ARouter.getInstance().build("/example/recyclerView").navigation();
+//                startActivity(new Intent(getContext(),ReactActivity.class));
             }
         });
         /** init **/

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingTop="10dp">
+        <TextView
+            android:id="@+id/refresh_status_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:minWidth="100dp"
+            android:gravity="center"
+            android:text="@string/listview_header_hint_normal" />
+        <ImageView
+            android:id="@+id/listview_header_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/refresh_status_textview"
+            android:src="@mipmap/ic_pulltorefresh_arrow" />
+        <com.jinqiang.baselibrary.progressDialog.SimpleView
+            android:id="@+id/listview_header_progressbar"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_toLeftOf="@id/refresh_status_textview"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="10dp"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,11 +1,10 @@
-package com.jinqiang.Utils.progressDialog;
+package com.jinqiang.baselibrary.progressDialog;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Window;
 
-import com.jinqiang.RecyclerViewRefresh.View.SimpleView;
-import com.jinqiang.widgets.R;
+import com.jinqiang.baselibrary.R;
 
 
 /**

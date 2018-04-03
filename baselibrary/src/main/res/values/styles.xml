@@ -1,0 +1,63 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#4fc3f7</item>
+        <item name="colorPrimaryDark">#4fc3f7</item>
+        <item name="colorAccent">#4fc3f7</item>
+    </style>
+
+    <style name="SupportTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="colorPrimary">#673AB7</item>-->
+        <!--<item name="colorPrimaryDark">#512DA8</item>-->
+        <!--<item name="colorAccent">#FF4081</item>-->
+        <item name="colorPrimary">#0bb9ff</item>
+        <item name="colorPrimaryDark">#0bb9ff</item>
+        <item name="colorAccent">#ffffff</item>
+    </style>
+
+    <style name="Translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">#03a9f4</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimary">#B3E5FC</item>
+        <item name="colorAccent">#ffffff</item>
+    </style>
+
+    <style name="TextLabel" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorControlActivated">#ffffff</item>
+    </style>
+
+    <!--Raised Button style-->
+    <style name="CustomButton" parent="Theme.AppCompat.Light">
+        <!-- 点击高亮时背景颜色 -->
+        <item name="colorControlHighlight">#03A9F4</item>
+        <!-- 按钮正常背景颜色 -->
+        <item name="colorButtonNormal">#4fc3f7</item>
+    </style>
+
+    <!--透明-->
+    <style name="Transparent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+
+    </style>
+
+    <style name="progress_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--<style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--<item name="android:windowBackground">@mipmap/welcome_img</item>-->
+        <!--<item name="android:windowFullscreen">true</item>-->
+    <!--</style>-->
+</resources>

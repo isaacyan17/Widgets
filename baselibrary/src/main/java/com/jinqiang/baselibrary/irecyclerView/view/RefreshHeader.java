@@ -1,4 +1,4 @@
-package com.jinqiang.RecyclerViewRefresh.View;
+package com.jinqiang.baselibrary.irecyclerView.view;
 
 
 import android.animation.ValueAnimator;
@@ -16,7 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jinqiang.widgets.R;
+import com.jinqiang.baselibrary.R;
+import com.jinqiang.baselibrary.progressDialog.SimpleView;
+
 
 public class RefreshHeader extends LinearLayout {
     // 刷新状态,正常-准备刷新-刷新-完成
@@ -53,7 +55,7 @@ public class RefreshHeader extends LinearLayout {
 
     private void initView() {
         //初始化header布局
-        mContainer = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.recyclerview_header_layout, null);
+        mContainer = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.baselibrary_recyclerview_header_layout, null);
         LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         lp.setMargins(0, 0, 0, 0);
         setLayoutParams(lp);

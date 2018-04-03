@@ -64,7 +64,7 @@ public class testAdapter extends IRecyclerView.Adapter<testAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         if(mHeaderViews!=null && sHeaderTypes.contains(viewType))
             return new ViewHolder(getHeaderViewByType(viewType));
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_layout,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_layout2,viewGroup,false);
         return new ViewHolder(view);
     }
     //将数据与界面进行绑定的操作

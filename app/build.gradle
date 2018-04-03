@@ -9,6 +9,12 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        ndk {
+            //选择要添加的对应cpu类型的.so库。不加这个会导致华为等机型崩溃
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'mips'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
     }
     buildTypes {
         release {
@@ -50,4 +56,7 @@ dependencies {
     //chrome里监听所有http请求，查看本地Database内容
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+
+    compile project(':baselibrary')
+    compile project(':example')
 }
