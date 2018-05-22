@@ -3,8 +3,10 @@ package com.jinqiang.baselibrary;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.jinqiang.baselibrary.module.ApplicationModule;
 
 /**
  * @author: jinqiang
@@ -12,11 +14,11 @@ import com.alibaba.android.arouter.launcher.ARouter;
  * @desc:
  */
 
-public class BaseApplication extends Application {
+public class BaseApplication extends MultiDexApplication {
 
     private static BaseApplication instance;
     private ApplicationDelegate applicationDelegate;
-
+    private ApplicationComponent applicationComponent;
 
     public static BaseApplication getInstance() {
         return instance;
@@ -29,6 +31,7 @@ public class BaseApplication extends Application {
         applicationDelegate.attachBaseContext(base);
         MultiDex.install(this);
 
+
     }
 
     @Override
@@ -39,6 +42,7 @@ public class BaseApplication extends Application {
         ARouter.openDebug();
         ARouter.init(this);
         instance = this;
+//        applicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
         applicationDelegate.onCreate(this);
     }
 
